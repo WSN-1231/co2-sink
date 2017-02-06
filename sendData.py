@@ -21,13 +21,15 @@ class TailData2(object):
 			try:
                                 print 'we got packet'
                                 readP = read.split(',')
-                                nodeID = readP[1]
+                                nodeID = readP[0]
+				if nodeID == 0:
+					nodeID = 100
 				#nodeID = 9
-                                data_timestamp = readP[2]
-                                data_co2 = readP[3]
-                                data_temp = str(float(readP[4])/100)
-                                data_hum = str(float(readP[5])/100)
-                                data_light = "0"
+                                data_timestamp = readP[1]
+                                data_co2 = readP[2]
+                                data_temp = str(float(readP[3])/100)
+                                data_hum = str(float(readP[4])/100)
+                                data_light = str(readP[5])
                                 print nodeID, data_timestamp, data_co2, data_temp, data_hum
 
 				d = Packet(data_co2, data_temp, data_hum, data_light, nodeID, data_timestamp)
